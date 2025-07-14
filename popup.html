@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      min-height: 400px;
+      padding: 20px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      color: #007bff;
+      font-size: 24px;
+    }
+    
+    .header p {
+      margin: 5px 0 0 0;
+      color: #6c757d;
+      font-size: 14px;
+    }
+    
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .section h3 {
+      margin: 0 0 15px 0;
+      color: #343a40;
+      font-size: 16px;
+    }
+    
+    .control {
+      margin-bottom: 15px;
+    }
+    
+    .control label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #495057;
+    }
+    
+    .control input[type="range"] {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    
+    .control .value {
+      text-align: right;
+      font-size: 12px;
+      color: #6c757d;
+    }
+    
+    .control select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .control input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+    
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+    
+    .voice-info {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 5px;
+    }
+    
+    .shortcut-info {
+      background: #e9ecef;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #495057;
+    }
+    
+    .shortcut-info h4 {
+      margin: 0 0 8px 0;
+      color: #343a40;
+    }
+    
+    .shortcut-info div {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Read Anything</h1>
+    <p>朗读网页选中文本</p>
+  </div>
+
+  <div class="section">
+    <h3>语音设置</h3>
+    <div class="control">
+      <label for="voice-select">选择语音:</label>
+      <select id="voice-select">
+        <option value="">使用默认语音</option>
+      </select>
+      <div class="voice-info">可用语音加载中...</div>
+    </div>
+    
+    <div class="control">
+      <label for="rate-slider">语速: <span id="rate-value">1.0</span></label>
+      <input type="range" id="rate-slider" min="0.1" max="10" step="0.1" value="1">
+    </div>
+    
+    <div class="control">
+      <label for="pitch-slider">音调: <span id="pitch-value">1.0</span></label>
+      <input type="range" id="pitch-slider" min="0" max="2" step="0.1" value="1">
+    </div>
+    
+    <div class="control">
+      <label for="volume-slider">音量: <span id="volume-value">1.0</span></label>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>功能设置</h3>
+    <div class="control">
+      <label>
+        <input type="checkbox" id="highlight-checkbox" checked>
+        朗读时高亮文本
+      </label>
+    </div>
+    
+    <div class="control">
+      <label>
+        <input type="checkbox" id="autoread-checkbox" checked>
+        自动朗读选中文本
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>快捷键</h3>
+    <div class="shortcut-info">
+      <h4>键盘快捷键:</h4>
+      <div><strong>Ctrl+Shift+S:</strong> 打开设置</div>
+      <div><strong>Ctrl+Shift+R:</strong> 朗读选中</div>
+      <div><strong>Ctrl+Shift+C:</strong> 停止朗读</div>
+      <div><strong>Alt+双击:</strong> 打开设置面板</div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-success" id="read-selected">朗读选中</button>
+    <button class="btn btn-secondary" id="stop-reading">停止朗读</button>
+    <button class="btn btn-primary" id="save-settings">保存设置</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

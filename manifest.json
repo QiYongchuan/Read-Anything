@@ -1,13 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Selection Reader",
-  "description": "Reads aloud any text you select on a page.",
-  "version": "1.0",
+  "name": "Read Anything",
+  "description": "朗读网页上选中的任何文本，支持多种语音和个性化设置",
+  "version": "2.0",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "朗读设置"
+  }
+
 }
